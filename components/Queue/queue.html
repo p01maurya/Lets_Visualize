@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LETS VISUALIZE/queue</title>
+  <link rel="stylesheet" href="queue.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div id="header">
+      <div id="OperationContainer">
+        <input type="text" id="InsertNodeField" placeholder="Enter the number" />
+        <button type="button" id="InsertButton" class="button">Enqueue</button>
+        <input type="text" id="DeleteNodeField" placeholder="Enter the number" />
+        <button type="button" id="DeleteButton" class="button">Dequeue</button>
+        <button type="button" id="SimulateButton" class="button">Simulate</button>
+      </div>
+      <a href="../../index.html">
+        <div id="title">LETS VISUALIZE</div>
+      </a>
+    </div>
+    <div class="Canvas">
+      <div class="indicator">
+        <svg>
+          <g class="topelement">
+            <circle id="nodeIndicator" r="15" cx="25" cy="70" value="root"></circle>
+            <text dx="50" dy="77" fill="white" font-weight="bold">TOP ELEMENT</text>
+        </g>
+        <g class="node">
+            <circle id="nodeIndicator" r="15" cx="25" cy="115" value="root"></circle>
+            <text dx="50" dy="122" fill="white" font-weight="bold">ELEMENT</text>
+        </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- D3.JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.5.0/d3.min.js"
+    integrity="sha512-0XfwGD1nxplHpehcSVI7lY+m/5L37PNHDt+DOc7aLFckwPXjnjeA1oeNbru7YeI4VLs9i+ADnnHEhP69C9CqTA=="
+    crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
