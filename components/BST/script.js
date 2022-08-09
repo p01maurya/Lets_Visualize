@@ -1,13 +1,7 @@
-// structure of node
-// {
-//     nodeId: number <--- unique id for each node. it will be also used as id for html element of node.
-//     value: character <-- this will store value of current node.
-//     children: [] <--- this array will store left and right of node
-// }
 
 // Tree will be stored as object.
 let data = { value: null, children: [] };
-// Current available id for the node. We will give each node a unique id and put this as their html element "id".
+
 let curId = 1;
 
 const width = Math.max(100, window.innerWidth - 50);
@@ -19,7 +13,7 @@ const padding = 22;
 
 d3.select('.Canvas').append('svg').append('g');
 
-// During insertion or deletion visualization process disbale the buttons
+// During insertion or deletion visualization process disabling buttons
 const freezeButtons = () => {
     document.getElementById('InsertButton').disabled = true;
     document.getElementById('DeleteButton').disabled = true;
@@ -37,20 +31,12 @@ const sleep = (ms) => {
 const update = (oldData, newData, parentValue, childValue) => {
     // childValue is node we want to insert/delete and parentValue is parent of node we want to insert/delete.
 
-    /*
-      Small description of "update" function.
-       -> Find the co-ordinates of old tree.
-       -> Find the co-ordinates of new updated tree.
-       -> Put tree on old co-ordinates.
-       -> Animate nodes and links to the new co-ordinates.
-    */
-
     // Create the old and new updated tree.
     const treemap = d3.tree().size([width, height]);
     const oldTree = treemap(d3.hierarchy(oldData, (d) => d.children));
     const newTree = treemap(d3.hierarchy(newData, (d) => d.children));
 
-    // Convert both tres from objects to array.
+   
     const oldTreeArray = oldTree.descendants();
     const newTreeArray = newTree.descendants();
     // Putting old and new co-ordinates of nodes in the same array.
@@ -92,8 +78,7 @@ const update = (oldData, newData, parentValue, childValue) => {
         }
     }
 
-    // We will draw edge(links) 2 times. why?
-    // When we traverse the BST, it will be easy to show animation of searching. we will paint top edge with some color while searching node.
+    
     for (let i = 0; i < 2; i++) {
         const lineId = i == 0 ? 'Under' : '';
 
@@ -306,8 +291,7 @@ const deleteNode = async () => {
         parent = node;
 
         if (node.value == val) {
-            // Found the node which we want to delete. We just create updated tree with some other function and display it.
-            // More better way will be, if there are 2 childs to this node then show animation to find inorder successor.
+           
             await sleep(500);
             newData = deleteNodeRecur(newData, val);
             update(oldData, newData, -1, -1);
